@@ -27,14 +27,17 @@ body {
   line-height: 1;
   font-weight: 400;
   color: var(--text-color);
-  background: rgb(151, 145, 255);
+  background: rgb(98, 89, 255);
   background: linear-gradient(
-    90deg,
-    rgba(151, 145, 255, 1) 5%,
-    rgba(130, 130, 255, 1) 39%,
-    rgba(145, 167, 255, 1) 87%
+    153deg,
+    rgba(98, 89, 255, 1) 4%,
+    rgba(106, 106, 235, 1) 51%,
+    rgba(181, 196, 255, 1) 82%
   );
+  background-size: 300% 300%;
+  animation: gradient 5s ease infinite;
 }
+
 .container-game {
   width: 80rem;
   margin: 20rem auto;
@@ -141,4 +144,16 @@ body {
 .copyright {
   font-size: 1.2rem;
   font-weight: 500;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
