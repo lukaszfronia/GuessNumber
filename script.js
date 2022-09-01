@@ -8,6 +8,12 @@ const winNum = document.querySelector('.win-num');
 const win = document.querySelector('.win');
 const randomNumber = Math.floor(Math.random() * 20) + 1;
 
+const year = document.querySelector('.year');
+
+const currentDate = new Date().getFullYear();
+
+year.innerHTML = currentDate;
+
 winNum.innerHTML = randomNumber;
 hintText.textContent = '';
 let sum = 0;
