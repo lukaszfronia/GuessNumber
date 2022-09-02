@@ -7,6 +7,7 @@ const moves = document.querySelector('.moves');
 const winNum = document.querySelector('.win-num');
 const win = document.querySelector('.win');
 const randomNumber = Math.floor(Math.random() * 20) + 1;
+const time = 5000; // 5s
 
 const year = document.querySelector('.year');
 
@@ -19,6 +20,22 @@ hintText.textContent = '';
 let sum = 0;
 
 // Function
+
+const clearInput = () => (inputField.value = '');
+const checkNum = (num, rand) => {
+  if (num === rand) {
+    win.classList.toggle('hidden');
+    moves.innerHTML = sum;
+    hintText.textContent = 'No more hints. You win';
+    setTimeout(() => location.reload(), time); // Restart game when player win
+  }
+  if (num < rand) {
+    hintText.textContent = 'Less than the guessed number';
+  }
+  if (num > rand) {
+    hintText.textContent = 'More than the guessed number';
+  }
+};
 
 const guessTheNumber = e => {
   e.preventDefault();
@@ -35,22 +52,10 @@ const guessTheNumber = e => {
         ? 'Please insert a number'
         : 'Please insert number between 1 - 20'
     }`;
-    inputField.value = '';
+    clearInput();
   } else {
-    if (number === randomNumber) {
-      win.classList.toggle('hidden');
-      moves.innerHTML = sum;
-      hintText.textContent = 'No more hints. You win';
-      inputField.value = '';
-    }
-    if (number < randomNumber) {
-      hintText.textContent = 'Less than the guessed number';
-      inputField.value = '';
-    }
-    if (number > randomNumber) {
-      hintText.textContent = 'More than the guessed number';
-      inputField.value = '';
-    }
+    checkNum(number, randomNumber);
+    clearInput();
   }
 };
 
